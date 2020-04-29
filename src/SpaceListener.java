@@ -11,14 +11,9 @@ public class SpaceListener implements KeyListener {
             Main.exit();
         }
     }
+    @Override
+    public void keyPressed(KeyEvent e) {}
 
     @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
+    public void keyReleased(KeyEvent e) {}
 }
