@@ -1,15 +1,12 @@
 import java.util.Comparator;
 
-public class Action {
+class Action {
     public double time;
     public double[] velocities;
 
-    public Action(double time, double[] velocities) {
+    public Action(double[] velocities, double time) {
         this.time = time;
         this.velocities = velocities;
-    }
-    public boolean isBigger(Action a, Action b){
-        return a.time>b.time;
     }
 }
 
