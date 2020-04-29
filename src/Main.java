@@ -15,6 +15,8 @@ public class Main {
     private static int mode = 0;
     private static PaintFrame frame;
     private static ArrayList<Action> actions = new ArrayList<>();
+    private static int c_num = 0;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         Robot r = new Robot();
@@ -26,15 +28,18 @@ public class Main {
         r.setVelocities(a);
 
        Point prev = new Point(0,0);
-
         int i = 0;
         while (true) {
             //Getting command from terminal
             if(br.ready()) try {
-                Action ac = createAction(br.readLine());
+                String s = br.readLine();
+                c_num++;
+                Action ac = createAction(s);
                 actions.add(ac);
             }catch (DataFormatException e){
                 System.err.println(e.getMessage());
+            }catch (Exception e){
+                System.err.println("Wrong line format: "+c_num);
             }
 
             //Checking if it's time for new action
@@ -90,7 +95,7 @@ public class Main {
         System.exit(0);
     }
 
-    private static Action createAction(String s) throws DataFormatException {
+    private static Action createAction(String s) throws DataFormatException, IndexOutOfBoundsException {
         String[] arguments = s.split(" ");
         double time = Double.parseDouble(arguments[3]);
         if(time<lastActionTime){
